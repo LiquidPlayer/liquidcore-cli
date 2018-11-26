@@ -26,7 +26,7 @@ const surface_map = {
         },
         dependencies: {
             "react-native": "0.56.0",
-            "liquidcore-cli": "^0.1.1"
+            "liquidcore-cli": "^0.1.2"
         }
     };
 
