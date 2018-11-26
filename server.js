@@ -1,13 +1,20 @@
+/*
+ * Copyright © 2018 LiquidPlayer
+ *
+ * Released under the MIT license.  See LICENSE.md for terms.
+ */
+'use strict';
+
 (() => {
-  require('react-native/setupBabel')();
+  const path = require('path');
+  const local_path = path.resolve('.') + '/node_modules/';
+  require(local_path + 'react-native/setupBabel')();
 
   const Metro = require('metro');
-  const config = require('react-native/local-cli/core');
-  const runServer = require('react-native/local-cli/server/runServer');
+  let config = require(local_path + 'react-native/local-cli/core');
+  const runServer = require(local_path + 'react-native/local-cli/server/runServer');
 
   const server = (override) => {
-    'use strict';
-
     var args = {
       assetExts: [],
       host: "",
