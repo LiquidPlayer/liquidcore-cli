@@ -28,6 +28,25 @@
 
     Object.assign(args, override);
 
+    const space = (text, spaces) => {
+      spaces = Math.max(0, spaces - text.length);
+      for (var i=0; i<spaces; i++) text += ' ';
+      return text;
+    };
+
+    if (args.help) {
+      console.log('Usage: ');
+      console.log('\tnpm run server -- [options]');
+      console.log('');
+      console.log('Where [options] are zero or more of: ');
+
+      const help = require(local_path + 'react-native/local-cli/server/server').options;
+      for (var i=0; i<help.length; i++) {
+          console.log('\t' + space(help[i].command,40) + (help[i].description===undefined ? '' : help[i].description));
+      }
+      process.exit(0);
+    }
+
     const startedCallback = logReporter => {
       logReporter.update({
         type: 'initialize_started',

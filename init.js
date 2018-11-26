@@ -152,7 +152,17 @@ const surface_map = {
         var args = {};
         Object.assign(args, override);
 
-        if (!args._ || args.length < 1) {
+        if (args.help) {
+            console.log('Usage:');
+            console.log('\tliquidcore init <project-dir> [--surface=<canonical-surface-name>]');
+            console.log('');
+            console.log('Where:');
+            console.log('\t<project-dir>              path to either a new (uncreated) or existing project directory.');
+            console.log('\t<canonical-surface-name>   the canonical name (e.g. org.liquidplayer.surface.reactnative.ReactNativeSurface) of the surface to attach.');
+            process.exit(0);
+        }
+
+        if (!args._ || args._.length < 1) {
             console.error('Must include <project-dir>.  Ex. liquidcore init ./myProject');
             process.exit(-2);
         }

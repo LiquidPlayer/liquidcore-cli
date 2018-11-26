@@ -35,6 +35,25 @@
 
         Object.assign(args, override);
 
+        const space = (text, spaces) => {
+            spaces = Math.max(0, spaces - text.length);
+            for (var i=0; i<spaces; i++) text += ' ';
+            return text;
+        };
+
+        if (args.help) {
+            console.log('Usage: ');
+            console.log('\tnpm run bundler -- [options]');
+            console.log('');
+            console.log('Where [options] are zero or more of: ');
+
+            const help = require(local_path + 'react-native/local-cli/bundle/bundleCommandLineArgs');
+            for (var i=0; i<help.length; i++) {
+                console.log('\t' + space(help[i].command,40) + (help[i].description===undefined ? '' : help[i].description));
+            }
+            process.exit(0);
+        }
+
         let output = (args._ && args.length > 0) ? args._[0] : args.entryFile.split('.').slice(0, -1).join('.') + '.bundle';
         args.bundleOutput = args.bundleOutput || output;
 

@@ -7,7 +7,8 @@
 
 const minimist = require('minimist');
 
-const modules = [
+const modules = global.__called_from_global ? [ 'init' ] :
+[
     'server',
     'bundle',
     'init'
