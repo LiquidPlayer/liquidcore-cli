@@ -14,7 +14,6 @@
     "url": "git+https://github.com/LiquidPlayer/liquidcore-cli.git"
   },
   "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "babel-preset-react-native": "^5",
     "metro": "^0.49.0",
     "metro-core": "^0.49.0",
