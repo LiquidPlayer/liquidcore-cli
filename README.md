@@ -42,3 +42,9 @@ This will create some startup code to attach to a console surface.
     cd myRNProject && npm install
     
 You must use version 0.56.0 of React Native for the time being.
+
+## License
+
+Copyright 2018 LiquidPlayer
+
+This project is distributed under the MIT license.  See LICENSE.md for terms.
