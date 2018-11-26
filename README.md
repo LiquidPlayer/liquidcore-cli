@@ -8,6 +8,7 @@ Command-line utilities for [LiquidCore](https://github.com/LiquidPlayer/LiquidCo
 ## Usage
 
 To create a new LiquidCore project:
+
     liquidcore init myProject
     
 If `myProject` does not exist, this will create the directory and fill it with a simple
