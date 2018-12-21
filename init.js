@@ -34,7 +34,7 @@ const surface_map = {
 
     const babelrc = {
         presets: [
-            [env, {
+            ["env", {
                 "targets": {
                     node: "8.9"
                 }
@@ -225,6 +225,7 @@ const surface_map = {
             let promise = (err) ? new_project(config) : Promise.resolve(config);
             promise
                 .then(merge)
+                .then(mergeBabel)
                 .then(template_surface)
                 .then(success)
                 .catch((err) => {
