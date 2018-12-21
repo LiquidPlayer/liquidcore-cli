@@ -26,7 +26,7 @@ const surface_map = {
         },
         dependencies: {
             "react-native": "0.56.0",
-            "liquidcore-cli": "^0.1.3",
+            "liquidcore-cli": "^0.2.0",
             "babel-preset-env": "^1.7.0",
             "babel-polyfill": "^6.26.0"
         }
