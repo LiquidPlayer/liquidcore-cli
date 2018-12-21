@@ -26,8 +26,23 @@ const surface_map = {
         },
         dependencies: {
             "react-native": "0.56.0",
-            "liquidcore-cli": "^0.1.2"
+            "liquidcore-cli": "^0.1.3",
+            "babel-preset-env": "^1.7.0",
+            "babel-polyfill": "^6.26.0"
         }
+    };
+
+    const babelrc = {
+        presets: [
+            [env, {
+                "targets": {
+                    node: "8.9"
+                }
+            }]
+        ],
+        plugins: [
+            "@babel/plugin-proposal-object-rest-spread"
+        ]
     };
 
     const deepMerge = (...sources) => {
@@ -81,6 +96,36 @@ const surface_map = {
                     });
                 } else {
                     write_package_json(data);
+                }
+            });
+        });
+    };
+
+    const mergeBabel = (config) => {
+        return new Promise((resolve,reject) => {
+            const write_babelrc = (data) => {
+                fs.writeFile(config.dir + '/.babelrc', JSON.stringify(data,null,2), (err) => {
+                    if (err) return reject(err);
+                    console.log('.babelrc was updated.');
+                    resolve(config);
+                });
+            };
+
+            let blank_babelrc = {
+            };
+
+            fs.readFile(config.dir + '/.babelrc', (err,old)=>{
+                var data = err ? blank_babelrc : JSON.parse(old);
+                data = deepMerge(data, babelrc);
+
+                if (!err) {
+                    fs.writeFile(config.dir + '/.babelrc.bak', old, (error)=>{
+                        if (error) return reject(error);
+                        console.log('Original .babelrc written to .babelrc.bak.');
+                        write_babelrc(data);
+                    });
+                } else {
+                    write_babelrc(data);
                 }
             });
         });

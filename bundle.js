@@ -9,6 +9,7 @@
     const path = require('path');
     const local_path = path.resolve('.') + '/node_modules/';
     require(local_path + 'react-native/setupBabel')();
+    const configure = require('./Config');
 
     let config = require(local_path + 'react-native/local-cli/core');
     const buildBundle = require(local_path + 'react-native/local-cli/bundle/buildBundle');
@@ -57,9 +58,7 @@
         let output = (args._ && args.length > 0) ? args._[0] : args.entryFile.split('.').slice(0, -1).join('.') + '.bundle';
         args.bundleOutput = args.bundleOutput || output;
 
-        config.getModulesRunBeforeMainModule = () => [];
-
-        return buildBundle(args, config, outputBundle);
+        return buildBundle(args, configure(config), outputBundle);
     };
 
     module.exports = bundler;

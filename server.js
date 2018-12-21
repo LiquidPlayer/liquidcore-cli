@@ -9,8 +9,8 @@
   const path = require('path');
   const local_path = path.resolve('.') + '/node_modules/';
   require(local_path + 'react-native/setupBabel')();
+  const configure = require('./Config');
 
-  const Metro = require('metro');
   let config = require(local_path + 'react-native/local-cli/core');
   const runServer = require(local_path + 'react-native/local-cli/server/runServer');
 
@@ -61,9 +61,7 @@
       });
     };
 
-    config.getModulesRunBeforeMainModule = () => [];
-
-    runServer(args, config, startedCallback, readyCallback);
+    runServer(args, configure(config), startedCallback, readyCallback);
   };
 
   module.exports = server;
