@@ -133,8 +133,18 @@ class Package {
       this._content = JSON.parse(fs.readFileSync(this.path, 'utf8'));
       // <HACK> Added for liquidcore_cli - need ability to filter out "browser" replacements in
       // package.json without messing with React Native
-      if (global.filterReplacements && global.filterReplacements instanceof Array) {
-        global.filterReplacements.forEach(p => delete this._content[p]);
+      const cfg = global.liquidcore_config;
+      const name = this._content.name;
+      if (cfg && cfg.filterReplacements) {
+        if (typeof cfg.filterReplacements === 'string') cfg.filterReplacements = [ cfg.filterReplacements ];
+        if (!cfg.enableReplacements) cfg.enableReplacements = {};
+        cfg.filterReplacements.forEach(p => {
+          if (typeof cfg.enableReplacements[name] === 'string')
+            cfg.enableReplacements[name] = [ cfg.enableReplacements[name] ];
+          if (!cfg.enableReplacements[name] || !cfg.enableReplacements[name].includes(p)) {
+            delete this._content[p]
+          }
+        });
       }
       // </HACK>
     }

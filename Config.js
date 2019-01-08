@@ -12,6 +12,12 @@
 
   const local_path = path.resolve('.') + '/node_modules/';
 
+  try {
+    global.liquidcore_config = require(path.resolve('.', 'liquidcore.config'))
+  } catch (e) {
+    global.liquidcore_config = { filterReplacements: ['browser'] };
+  }
+
   // FIXME: This is a very ugly hack.  Metro assumes that we are bundling
   // for the browser, but in our case, we are not.  In the various package.json files
   // it is hardcoded to look for the "react-native" and "browser" properties.  In newer
@@ -20,14 +26,14 @@
   // have to overwrite that file locally to not do that.  This will maintain compatibility
   // with React Native.
   fs.writeFileSync(local_path + 'react-native/node_modules/metro/src/node-haste/Package.js',
-    fs.readFileSync(path.resolve(__dirname, 'Package.js'))
+    fs.readFileSync(path.resolve(__dirname, 'metro-polyfill/Package.js'))
   );
-  global.filterReplacements = ['browser'];
 
   // Similarly, there is no good way to save the system `require()` before metro overwrites
-  // it.
-  fs.writeFileSync(local_path + 'react-native/node_modules/metro/src/lib/getPreludeCode.js',
-    fs.readFileSync(path.resolve(__dirname, 'getPreludeCode.js'))
+  // it.  Plus metro does not handle cyclic dependencies well at all.  We fix these by
+  // using our own implementation of metroRequire.
+  fs.writeFileSync(local_path + 'react-native/node_modules/metro/src/defaults.js',
+    fs.readFileSync(path.resolve(__dirname, 'metro-polyfill/defaults.js'))
   );
 
   const configure = (config) => {

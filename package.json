@@ -1,6 +1,6 @@
 {
   "name": "liquidcore-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Command line utilities for LiquidCore",
   "main": "index.js",
   "scripts": {
@@ -14,10 +14,10 @@
     "url": "git+https://github.com/LiquidPlayer/liquidcore-cli.git"
   },
   "dependencies": {
-    "metro": "^0.49.0",
-    "metro-core": "^0.49.0",
+    "metro": "^0.49.2",
+    "metro-core": "^0.49.2",
     "minimist": "^1.2.0",
-    "react-devtools": "^3.4.3"
+    "react-devtools": "^3.5.3"
   },
   "devDependencies": {},
   "keywords": [
