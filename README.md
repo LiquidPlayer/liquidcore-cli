@@ -7,6 +7,25 @@ Command-line utilities for [LiquidCore](https://github.com/LiquidPlayer/LiquidCo
 
 ## Usage
 
+```
+Usage:
+  liquidcore [command] <options>
+
+Examples:
+  liquidcore init myJSProject
+  liquidcore gradle --dev --version='0.6.0'
+  liquidcore pod MyiOSProject --liquidcore=~/projects/LiquidCore
+
+Commands:
+  init <project-dir>   Initialize a JavaScript project for use with LiquidCore
+  gradle               Generate liquidcore.build.gradle and liquidcore.settings.gradle
+                       include files for Android project.
+  pod <target>         Generates a Podfile for iOS project to stdout.
+  
+For more information on each command, specify the --help option, e.g.
+liquidcore pod --help
+```
+
 To create a new LiquidCore project:
 
     liquidcore init myProject
