@@ -7,7 +7,9 @@
 
 global.__called_from_global = true;
 
-if (!process.argv.includes('init')) {
+if (!process.argv.includes('init') &&
+    !process.argv.includes('gradle') &&
+    !process.argv.includes('pod')) {
     process.argv.push('--help=true');
 }
-require('./cli.js');
+require('./lib/cli.js');
