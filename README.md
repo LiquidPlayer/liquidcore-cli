@@ -28,24 +28,8 @@ From here, you can run a dev server by:
 Which will open a metro server at `http://localhost:8082`.  You can add the `--help` option to any
 command to get detailed information on options (e.g. `npm run server -- --help`).
 
-### Creating a project with a UI Surface
-
-To create a LiquidCore project with a surface, run:
-
-    liquidcore init myConsoleSurface --surface=org.liquidplayer.surface.console.ConsoleSurface
-    
-This will create some startup code to attach to a console surface.
-
-### Creating a React Native LiquidCore project
-
-    react-native init --version=0.56.0 myRNProject
-    liquidcore init --surface=org.liquidplayer.surface.reactnative.ReactNativeSurface myRNProject
-    cd myRNProject && npm install
-    
-You must use version 0.56.0 of React Native for the time being.
-
 ## License
 
-Copyright 2018 LiquidPlayer
+Copyright 2018-2019 LiquidPlayer
 
 This project is distributed under the MIT license.  See LICENSE.md for terms.
