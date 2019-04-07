@@ -2,6 +2,10 @@
 
 Command-line utilities for [LiquidCore](https://github.com/LiquidPlayer/LiquidCore).
 
+[![Download](https://img.shields.io/npm/dt/liquidcore-cli.svg)](https://www.npmjs.com/package/liquidcore-cli)
+
+[![NPM](https://nodei.co/npm/liquidcore-cli.png)](https://nodei.co/npm/liquidcore-cli/)
+
 ## Installation
     npm install -g liquidcore-cli
 
