@@ -1,6 +1,6 @@
 {
   "name": "liquidcore-cli",
-  "version": "0.4.9",
+  "version": "0.4.8",
   "description": "Command line utilities for LiquidCore",
   "main": "index.js",
   "scripts": {
